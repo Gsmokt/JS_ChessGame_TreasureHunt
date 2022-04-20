@@ -6,34 +6,36 @@ export class Queen extends Pawn {
   }
   getMoves(board) {
     let i = 1;
+    let table = [];
     this.position = board[this.y][this.x];
     while (i < 8) {
       if (this.y - i >= 0) {
-        this.moves.push(board[this.y - i][this.x]);
+        table = [...table, board[this.y - i][this.x]];
       }
       if (this.y + i < 7) {
-        this.moves.push(board[this.y + i][this.x]);
+        table = [...table, board[this.y + i][this.x]];
       }
       if (this.x + i < 8) {
-        this.moves.push(board[this.y][this.x + i]);
+        table = [...table, board[this.y][this.x + i]];
       }
       if (this.x - i >= 0) {
-        this.moves.push(board[this.y][this.x - i]);
+        table = [...table, board[this.y][this.x - i]];
       }
       if (this.y + i < 7 && this.x - i >= 0) {
-        this.moves.push(board[this.y + i][this.x - i]);
+        table = [...table, board[this.y + i][this.x - i]];
       }
       if (this.y + i < 7 && this.x + i < 8) {
-        this.moves.push(board[this.y + i][this.x + i]);
+        table = [...table, board[this.y + i][this.x + i]];
       }
       if (this.y - i >= 0 && this.x - i >= 0) {
-        this.moves.push(board[this.y - i][this.x - i]);
+        table = [...table, board[this.y - i][this.x - i]];
       }
       if (this.y - i >= 0 && this.x + i < 8) {
-        this.moves.push(board[this.y - i][this.x + i]);
+        table = [...table, board[this.y - i][this.x + i]];
       }
       i++;
     }
+    this.moves.push(...table);
     return;
   }
 }

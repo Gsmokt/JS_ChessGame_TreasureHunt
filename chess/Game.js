@@ -19,8 +19,8 @@ export class Game {
     });
   }
   start() {
-    if (this.status === true) return this.gameStats;
     this.checkIfCanReach();
+    if (this.status) return this.gameStats;
     this.position.randomSpot();
     return this.start();
   }
